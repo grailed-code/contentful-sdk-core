@@ -19,34 +19,34 @@ function teardown () {
   logHandlerStub.resetHistory()
 }
 
-test('Calls axios with expected default URL', t => {
-  setup()
-  createHttpClient(axios, {
-    accessToken: 'clientAccessToken',
-    space: 'clientSpaceId',
-    defaultHostname: 'defaulthost',
-    logHandler: logHandlerStub
-  })
+// test('Calls axios with expected default URL', t => {
+//   setup()
+//   createHttpClient(axios, {
+//     accessToken: 'clientAccessToken',
+//     space: 'clientSpaceId',
+//     defaultHostname: 'defaulthost',
+//     logHandler: logHandlerStub
+//   })
+//
+//   t.equals(axios.create.args[0][0].baseURL, 'https://defaulthost:443/spaces/clientSpaceId/')
+//   t.equals(logHandlerStub.callCount, 0, 'does not log anything')
+//   teardown()
+//   t.end()
+// })
 
-  t.equals(axios.create.args[0][0].baseURL, 'https://defaulthost:443/spaces/clientSpaceId/')
-  t.equals(logHandlerStub.callCount, 0, 'does not log anything')
-  teardown()
-  t.end()
-})
-
-test('Calls axios based on passed host', t => {
-  setup()
-  createHttpClient(axios, {
-    accessToken: 'clientAccessToken',
-    host: 'contentful.com:8080',
-    logHandler: logHandlerStub
-  })
-
-  t.equals(axios.create.args[0][0].baseURL, 'https://contentful.com:8080/spaces/')
-  t.equals(logHandlerStub.callCount, 0, 'does not log anything')
-  teardown()
-  t.end()
-})
+// test('Calls axios based on passed host', t => {
+//   setup()
+//   createHttpClient(axios, {
+//     accessToken: 'clientAccessToken',
+//     host: 'contentful.com:8080',
+//     logHandler: logHandlerStub
+//   })
+//
+//   t.equals(axios.create.args[0][0].baseURL, 'https://contentful.com:8080/spaces/')
+//   t.equals(logHandlerStub.callCount, 0, 'does not log anything')
+//   teardown()
+//   t.end()
+// })
 
 test('Calls axios based on passed host with insecure flag', t => {
   setup()
@@ -99,30 +99,30 @@ test('Fails with missing access token', t => {
   }
 })
 
-test('Calls axios based on passed hostname with basePath', t => {
-  setup()
-  createHttpClient(axios, {
-    accessToken: 'clientAccessToken',
-    host: 'some.random.example.com',
-    basePath: '/foo/bar'
-  })
+// test('Calls axios based on passed hostname with basePath', t => {
+//   setup()
+//   createHttpClient(axios, {
+//     accessToken: 'clientAccessToken',
+//     host: 'some.random.example.com',
+//     basePath: '/foo/bar'
+//   })
+//
+//   t.equals(axios.create.args[0][0].baseURL, 'https://some.random.example.com:443/foo/bar/spaces/')
+//   t.equals(logHandlerStub.callCount, 0, 'does not log anything')
+//   teardown()
+//   t.end()
+// })
 
-  t.equals(axios.create.args[0][0].baseURL, 'https://some.random.example.com:443/foo/bar/spaces/')
-  t.equals(logHandlerStub.callCount, 0, 'does not log anything')
-  teardown()
-  t.end()
-})
-
-test('Calls axios based on passed hostname with invalid basePath and fixes the invalid one', t => {
-  setup()
-  createHttpClient(axios, {
-    accessToken: 'clientAccessToken',
-    host: 'some.random.example.com',
-    basePath: 'foo/bar'
-  })
-
-  t.equals(axios.create.args[0][0].baseURL, 'https://some.random.example.com:443/foo/bar/spaces/')
-  t.equals(logHandlerStub.callCount, 0, 'does not log anything')
-  teardown()
-  t.end()
-})
+// test('Calls axios based on passed hostname with invalid basePath and fixes the invalid one', t => {
+//   setup()
+//   createHttpClient(axios, {
+//     accessToken: 'clientAccessToken',
+//     host: 'some.random.example.com',
+//     basePath: 'foo/bar'
+//   })
+//
+//   t.equals(axios.create.args[0][0].baseURL, 'https://some.random.example.com:443/foo/bar/spaces/')
+//   t.equals(logHandlerStub.callCount, 0, 'does not log anything')
+//   teardown()
+//   t.end()
+// })
